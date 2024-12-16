@@ -118,8 +118,8 @@ void setup() {
 		if (checkNVRAMIsValidData() == false) {
 			loadNVRAMDefaults();
 		}
-		strncpy(config.http_username, "", sizeof(MAX_HTTP_USERNAME));
-		strncpy(config.http_password, "", sizeof(MAX_HTTP_PASSWORD));
+		strncpy(config.http_username, "", MAX_HTTP_USERNAME);
+		strncpy(config.http_password, "", MAX_HTTP_PASSWORD);
 
 		server.begin();
 		htmlAddHandlers();
@@ -235,9 +235,9 @@ void setup() {
 	rxnum = 0;
 	rx_buffer_overflow = false;
 	Serial.printf("nRF905: switching to receive mode\n");
-	Serial.printf("mode=%i", nrf905->getMode());
+	Serial.printf("mode=%i\n", nrf905->getMode());
 	nrf905->setModeReceive();
-	Serial.printf("mode=%i", nrf905->getMode());
+	Serial.printf("mode=%i\n", nrf905->getMode());
 	Serial.printf("Setup done\n");
 }
 
