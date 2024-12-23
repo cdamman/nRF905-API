@@ -193,6 +193,9 @@ void setup() {
 	// Set the certificates from PMEM (if using DRAM remove the _P from the call)
 	server.getServer().setRSACert(new BearSSL::X509List(serverCert), new BearSSL::PrivateKey(serverKey));
 //	server.getServer().setServerKeyAndCert_P(rsakey, sizeof(rsakey), x509, sizeof(x509));
+#ifdef ARDUINO_ARCH_ESP8266
+	server.getServer().setBufferSizes(2048, 837);
+#endif
 #endif
 
 	// Start the HTTP server
